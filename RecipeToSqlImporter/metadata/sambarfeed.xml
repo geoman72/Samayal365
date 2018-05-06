@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>1000</identity>
+    <categoryname>அசைவம்</categoryname>
+    <inputfolderpath>..\..\input\sambar\அசைவம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>2000</identity>
+    <categoryname>அரைத்து விட்ட</categoryname>
+    <inputfolderpath>..\..\input\sambar\அரைத்து விட்ட</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>3000</identity>
+    <categoryname>கத்திரிக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\கத்திரிக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>4000</identity>
+    <categoryname>கலவை காய்கறி</categoryname>
+    <inputfolderpath>..\..\input\sambar\கலவை காய்கறி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>5000</identity>
+    <categoryname>காலிஃப்ளவர்</categoryname>
+    <inputfolderpath>..\..\input\sambar\காலிஃப்ளவர்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>6000</identity>
+    <categoryname>கீரை</categoryname>
+    <inputfolderpath>..\..\input\sambar\கீரை</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>7000</identity>
+    <categoryname>குடைமிளகாய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\குடைமிளகாய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>8000</identity>
+    <categoryname>கோவக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\கோவக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>9000</identity>
+    <categoryname>சுண்டைக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\சுண்டைக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>10000</identity>
+    <categoryname>டிப்பன்</categoryname>
+    <inputfolderpath>..\..\input\sambar\டிப்பன்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>11000</identity>
+    <categoryname>தக்காளி</categoryname>
+    <inputfolderpath>..\..\input\sambar\தக்காளி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>12000</identity>
+    <categoryname>ப்ரோக்கோலி</categoryname>
+    <inputfolderpath>..\..\input\sambar\ப்ரோக்கோலி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>13000</identity>
+    <categoryname>பலாக்கொட்டை</categoryname>
+    <inputfolderpath>..\..\input\sambar\பலாக்கொட்டை</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>14000</identity>
+    <categoryname>பாசிப்பருப்பு</categoryname>
+    <inputfolderpath>..\..\input\sambar\பாசிப்பருப்பு</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>15000</identity>
+    <categoryname>பூசணிக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\பூசணிக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>16000</identity>
+    <categoryname>மற்ற நகரங்கள்</categoryname>
+    <inputfolderpath>..\..\input\sambar\மற்ற நகரங்கள்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>17000</identity>
+    <categoryname>மற்ற வகைகள்</categoryname>
+    <inputfolderpath>..\..\input\sambar\மற்ற வகைகள்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>18000</identity>
+    <categoryname>மா இஞ்சி</categoryname>
+    <inputfolderpath>..\..\input\sambar\மா இஞ்சி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>19000</identity>
+    <categoryname>மாங்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\மாங்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>20000</identity>
+    <categoryname>முருங்கைக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\முருங்கைக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>21000</identity>
+    <categoryname>முள்ளங்கி</categoryname>
+    <inputfolderpath>..\..\input\sambar\முள்ளங்கி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>22000</identity>
+    <categoryname>மோர்</categoryname>
+    <inputfolderpath>..\..\input\sambar\மோர்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>23000</identity>
+    <categoryname>வாழைக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\வாழைக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>24000</identity>
+    <categoryname>வெங்காய</categoryname>
+    <inputfolderpath>..\..\input\sambar\வெங்காய</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>25000</identity>
+    <categoryname>வெண்டைக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\வெண்டைக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>26000</identity>
+    <categoryname>வெள்ளரிக்காய்</categoryname>
+    <inputfolderpath>..\..\input\sambar\வெள்ளரிக்காய்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>27000</identity>
+    <categoryname>ஹோட்டல்</categoryname>
+    <inputfolderpath>..\..\input\sambar\ஹோட்டல்</inputfolderpath>
+  </feed>
+</feeds>

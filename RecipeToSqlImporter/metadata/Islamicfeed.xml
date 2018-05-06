@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>1000</identity>
+    <categoryname>அசைவம்</categoryname>
+    <inputfolderpath>..\..\input\Islamic\அசைவம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>2000</identity>
+    <categoryname>இனிப்பு</categoryname>
+    <inputfolderpath>..\..\input\Islamic\இனிப்பு</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>3000</identity>
+    <categoryname>காரம்</categoryname>
+    <inputfolderpath>..\..\input\Islamic\காரம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>4000</identity>
+    <categoryname>சைவம்</categoryname>
+    <inputfolderpath>..\..\input\Islamic\சைவம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>5000</identity>
+    <categoryname>பானம்</categoryname>
+    <inputfolderpath>..\..\input\Islamic\பானம்</inputfolderpath>
+  </feed>
+</feeds>

@@ -23,7 +23,7 @@ namespace GenerateSqlStatement
                 System.Diagnostics.Trace.WriteLine(System.String.Format(@"INSERT INTO [dbo].[recipe_categories] ([id], [name] ,[image_path]) VALUES ({0},N'{1}', '{2}.png')",
                 htmlNode.SelectSingleNode(@"identity").InnerText,
                 htmlNode.SelectSingleNode(@"categoryname").InnerText,
-                htmlNode.SelectSingleNode(@"identity").InnerText));
+                htmlNode.SelectSingleNode(@"identity").InnerText));  
             }
         }
     }

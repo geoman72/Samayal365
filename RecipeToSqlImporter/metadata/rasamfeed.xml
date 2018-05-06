@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>1000</identity>
+    <categoryname>அசைவம்</categoryname>
+    <inputfolderpath>..\..\input\rasam\அசைவம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>2000</identity>
+    <categoryname>சைவம்</categoryname>
+    <inputfolderpath>..\..\input\rasam\சைவம்</inputfolderpath>
+  </feed>
+</feeds>

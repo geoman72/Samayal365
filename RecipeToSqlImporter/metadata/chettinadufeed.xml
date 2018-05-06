@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>1000</identity>
+    <categoryname>அசைவம்</categoryname>
+    <inputfolderpath>..\..\input\chettinadu\அசைவம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>2000</identity>
+    <categoryname>இனிப்பு</categoryname>
+    <inputfolderpath>..\..\input\chettinadu\இனிப்பு</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>3000</identity>
+    <categoryname>காரம்</categoryname>
+    <inputfolderpath>..\..\input\chettinadu\காரம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>4000</identity>
+    <categoryname>சைவம்</categoryname>
+    <inputfolderpath>..\..\input\chettinadu\சைவம்</inputfolderpath>
+  </feed>
+</feeds>

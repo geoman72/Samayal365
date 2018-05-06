@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>6000</identity>
+    <categoryname>பீஃப்</categoryname>
+    <inputfolderpath>..\..\input\briyani\beef</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>7000</identity>
+    <categoryname>சிக்கன்</categoryname>
+    <inputfolderpath>..\..\input\briyani\chicken</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>8000</identity>
+    <categoryname>முட்டை</categoryname>
+    <inputfolderpath>..\..\input\briyani\egg</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>9000</identity>
+    <categoryname>மீன்</categoryname>
+    <inputfolderpath>..\..\input\briyani\fish</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>10000</identity>
+    <categoryname>மட்டன்</categoryname>
+    <inputfolderpath>..\..\input\briyani\mutton</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>11000</identity>
+    <categoryname>இறால்</categoryname>
+    <inputfolderpath>..\..\input\briyani\prawns</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>12000</identity>
+    <categoryname>வெஜிடபிள்</categoryname>
+    <inputfolderpath>..\..\input\briyani\vegetable</inputfolderpath>
+  </feed>
+</feeds>

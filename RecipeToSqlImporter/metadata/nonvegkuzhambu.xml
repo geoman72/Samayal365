@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>1000</identity>
+    <categoryname>ஆட்டு</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\ஆட்டு</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>2000</identity>
+    <categoryname>இறால்</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\இறால்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>3000</identity>
+    <categoryname>காடை</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\காடை</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>4000</identity>
+    <categoryname>கோழி</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\கோழி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>5000</identity>
+    <categoryname>நண்டு</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\நண்டு</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>6000</identity>
+    <categoryname>மீன்</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\மீன்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>7000</identity>
+    <categoryname>முட்டை</categoryname>
+    <inputfolderpath>..\..\input\kuzhambu\non-veg\முட்டை</inputfolderpath>
+  </feed>
+</feeds>

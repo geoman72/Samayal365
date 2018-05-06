@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<div itemscope itemtype="http://schema.org/Recipe">
+    <h1 itemprop="name"></h1>
+    <p>By<span itemprop="author">Mindy Pretner</span></p>
+    <div itemprop="description"> "Pita Pizza is a quick snack or meal that can be customized to your liking!"</div>
+    <div><span itemprop="recipeYield">1</span> Serving</div>
+    <div>
+      ஆயத்த நேரம்: <time itemprop="prepTime"></time><br/>
+      சமைக்கும் நேரம்: <time itemprop="cookTime"></time><br/>
+      பரிமாறும் அளவு: <time itemprop="yield"></time><br/>
+    </div>
+    <div>
+      <h3>INGREDIENTS:</h3>
+       <ul>
+        <li itemprop="ingredients"></li>
+       </ul>
+    </div>
+    <div itemprop="recipeInstructions">
+      <h3>DIRECTIONS:</h3>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    <!-- custom notes section-->
+    <div id="recipeNotes">
+       <h3>NOTES:</h3>
+      <ul>
+        <li></li>
+      </ul>
+    </div>    
+</div>
