@@ -187,3 +187,12 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/RecipeHtmlParser/data
+/RecipeHtmlParser/desktop.ini
+/RecipeHtmlParser/.DS_Store
+/.vs/Samayal365/v15/Server/sqlite3/storage.ide-wal
+/.vs/Samayal365/v15/Server/sqlite3/storage.ide-shm
+/.vs/Samayal365/v15/Server/sqlite3/storage.ide
+/.vs/Samayal365/v15/Server/sqlite3/db.lock
+/RecipeToSqlImporter/input/breakfast
+/RecipeToSqlImporter/input
