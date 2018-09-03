@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 
@@ -17,20 +18,20 @@ namespace RecipeHtmlParser
         {
             WebClient myRecipesWebClient = new WebClient();
 
-            String recipesUrl = "http://www.arusuvai.com/tamil/expert/14409?page={0}";
+            //String recipesUrl = "http://www.arusuvai.com/tamil/recipes/42?page={0}";
             //String recipesUrl = "http://www.arusuvai.com/tamil/recipes/37?page={0}&type_1=All&tid=13";
+            String recipesUrl = "http://www.arusuvai.com/tamil/recipes?page={0}&type_1=All&tid=13";
 
-            
             string recipesPageUrl = recipesUrl;
-            String searchTerm     = "குருமா";
-            string downloadFolder = @"authors\Mrs vathsala Natkunam";
+            String searchTerm     = "பிரியாணி";
+            string downloadFolder = @"briyani\delta";
             bool ignoreSearchTerm = true;
-            int pages = 4;
+            int pages = 114;
 
             Dictionary<string,string> recipes  = new Dictionary<string, string>();
             Dictionary<string, int> hitRate    = new Dictionary<string, int>();
 
-            for (int i = 0; i <= pages; i++)
+            for (int i = 0; i < pages; i++)
             {
                 //if (i > 0)
                // {
@@ -124,7 +125,9 @@ namespace RecipeHtmlParser
             List<RecipeInfo> allRecipes = new List<RecipeInfo>();
             foreach (string reciepName in recipes.Keys.OrderBy(x => x))
             {
-                System.Diagnostics.Trace.WriteLine(reciepName + "  " + recipes[reciepName]);
+                
+
+                // System.Diagnostics.Trace.WriteLine(reciepName + "  " + recipes[reciepName]);
                  //// Create a new WebClient instance.
                 WebClient myWebClient = new WebClient();
                 //myWebClient.Proxy = new WebProxy("webproxy.corp.symetra.com", 8080);
@@ -147,13 +150,38 @@ namespace RecipeHtmlParser
                 string recipeName = doc.DocumentNode.SelectSingleNode(@"//h1").InnerHtml;
                 string authorName = doc.DocumentNode.SelectSingleNode(@"//div[@class='auth']/a") == null? "": doc.DocumentNode.SelectSingleNode(@"//div[@class='auth']/a").InnerHtml;
                 string rating = doc.DocumentNode.SelectSingleNode(@"//div[@class='star star-1 star-odd star-first']/span") == null ? "0" : ((int)Decimal.Parse(doc.DocumentNode.SelectSingleNode(@"//div[@class='star star-1 star-odd star-first']/span").InnerHtml)).ToString();
+
+                string createdDateStr;
+
+                try
+                {
+                    createdDateStr = doc.DocumentNode
+                        .SelectSingleNode(@"//*[@id='content']/div[2]/div[1]/div[1]/div[2]").InnerHtml;
+                }
+                catch (Exception e)
+                {
+                    createdDateStr = doc.DocumentNode
+                        .SelectSingleNode(@" //*[@id='rtopright']/div[2]").InnerHtml;
+                }
+               
+
+                Regex pattern = new Regex(@"\d{2}\/\d{2}\/\d{4}");
+                Match match = pattern.Match(createdDateStr);
+               
+
+                DateTime createdDateTime = System.DateTime.ParseExact(match.Value, "dd/MM/yyyy", null);
+
                 StringBuilder ingredients = new StringBuilder();
                 StringBuilder preparations = new StringBuilder();
                 StringBuilder notes = new StringBuilder();
 
-                System.Diagnostics.Trace.WriteLine(reciepName);
-                System.Diagnostics.Trace.WriteLine(authorName);
-                System.Diagnostics.Trace.WriteLine(rating);
+                //if (createdDateTime > DateTime.Parse(@"2014-06-21"))
+                //{
+                    System.Diagnostics.Trace.WriteLine(reciepName);
+                    System.Diagnostics.Trace.WriteLine(authorName);
+                    System.Diagnostics.Trace.WriteLine(rating);
+                    System.Diagnostics.Trace.WriteLine(createdDateTime.Date.ToString("MM-dd-yyyy"));
+                //}
 
                 foreach (HtmlNode htmlNode in doc.DocumentNode.SelectNodes(@"//div[@id='ingbox']/ul/div[@class='ingre']/li"))
                 {
@@ -218,13 +246,21 @@ namespace RecipeHtmlParser
                 // using name in metadata xml for unique names
                 OutDoc.LoadHtml(System.String.Format(template, reciepName, authorName, ingredients.ToString(), preparations.ToString(), notes.ToString()));
 
-                OutDoc.Save(ConfigurationManager.AppSettings["folderBasePath"].ToString() + downloadFolder + @"\" + rating + "-" + reciepName.Replace("/", " (அ) ").Replace(":", "").Replace("?", "") +  @".html", Encoding.UTF8);
-                allRecipes.Add(new RecipeInfo
-                {
-                    Name = reciepName,
-                    Url = recipes[reciepName],
-                    rating = rating
-                });
+                //if (createdDateTime > DateTime.Parse(@"2014-06-21"))
+                //{
+                    OutDoc.Save(ConfigurationManager.AppSettings["folderBasePath"].ToString() + downloadFolder + @"\"
+                                + createdDateTime.Date.ToString("MM-dd-yyyy") + "-"
+                                + rating + "-" + reciepName.Replace("/", " (அ) ").Replace(":", "").Replace("?", "") + @".html", Encoding.UTF8);
+
+                    allRecipes.Add(new RecipeInfo
+                    {
+                        Name = reciepName,
+                        Url = recipes[reciepName],
+                        Rating = rating,
+                        CreatedDate = createdDateTime
+                    });
+                //}
+                              
             }
 
             // csv fiel
@@ -233,10 +269,10 @@ namespace RecipeHtmlParser
                     new System.IO.StreamWriter(ConfigurationManager.AppSettings["folderBasePath"].ToString() +
                                                downloadFolder + @"\all.csv"))
             {
-                file.WriteLine("Name,URL,rating");
-                foreach (RecipeInfo recipeInfo in allRecipes.OrderByDescending(x => x.rating))
+                file.WriteLine("Name,URL,Rating");
+                foreach (RecipeInfo recipeInfo in allRecipes.OrderByDescending(x => x.Rating))
                 {
-                   file.WriteLine(String.Format("{0},{1},{2}", recipeInfo.Name, recipeInfo.Url, recipeInfo.rating));
+                   file.WriteLine(String.Format("{0},{1},{2}", recipeInfo.Name, recipeInfo.Url, recipeInfo.Rating));
                 }
             }
 
