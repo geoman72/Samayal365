@@ -20,13 +20,13 @@ namespace RecipeHtmlParser
 
             //String recipesUrl = "http://www.arusuvai.com/tamil/recipes/42?page={0}";
             //String recipesUrl = "http://www.arusuvai.com/tamil/recipes/37?page={0}&type_1=All&tid=13";
-            String recipesUrl = "http://www.arusuvai.com/tamil/recipes?page={0}&type_1=All&tid=13";
+            String recipesUrl = "http://www.arusuvai.com/tamil/recipes?page={0}&type_1=All&tid=12";
 
             string recipesPageUrl = recipesUrl;
             String searchTerm     = "பிரியாணி";
             string downloadFolder = @"briyani\delta";
             bool ignoreSearchTerm = true;
-            int pages = 114;
+            int pages = 411;
 
             Dictionary<string,string> recipes  = new Dictionary<string, string>();
             Dictionary<string, int> hitRate    = new Dictionary<string, int>();
@@ -244,10 +244,15 @@ namespace RecipeHtmlParser
                 }
 
                 // using name in metadata xml for unique names
-                OutDoc.LoadHtml(System.String.Format(template, reciepName, authorName, ingredients.ToString(), preparations.ToString(), notes.ToString()));
+                String recipeStr = System.String.Format(template, reciepName, authorName, ingredients.ToString()
+                    , preparations.ToString(), notes.ToString());
 
+                //recipeStr = recipeStr.Replace("<li>", "<p>").Replace("</li>", "</p>").Replace("<ol>", "").Replace("</ol>", "");
+
+                OutDoc.LoadHtml(recipeStr);
                 //if (createdDateTime > DateTime.Parse(@"2014-06-21"))
                 //{
+
                     OutDoc.Save(ConfigurationManager.AppSettings["folderBasePath"].ToString() + downloadFolder + @"\"
                                 + createdDateTime.Date.ToString("MM-dd-yyyy") + "-"
                                 + rating + "-" + reciepName.Replace("/", " (அ) ").Replace(":", "").Replace("?", "") + @".html", Encoding.UTF8);
@@ -260,7 +265,7 @@ namespace RecipeHtmlParser
                         CreatedDate = createdDateTime
                     });
                 //}
-                              
+
             }
 
             // csv fiel
