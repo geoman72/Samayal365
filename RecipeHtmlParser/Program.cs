@@ -47,7 +47,7 @@ namespace RecipeHtmlParser
                    // new RecipeMetaData {Name = "சீனா", PageCount = 5, FolderName = @"D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\country\china"},
                    // new RecipeMetaData {Name = "தாய்லாந்து", PageCount = 2, FolderName = @"D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\country\thailand"},
                    // new RecipeMetaData {Name = "மெக்சிகோ", PageCount = 2, FolderName = @"D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\country\Mexico"},
-                    new RecipeMetaData {Name = "மற்றநாடுகள்", PageCount = 43, FolderName = @"D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\country\others"},
+                   // new RecipeMetaData {Name = "மற்றநாடுகள்", PageCount = 43, FolderName = @"D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\country\others"},
                 };
 
             foreach (RecipeMetaData recipeMetaData in recipeMetaDataList)
