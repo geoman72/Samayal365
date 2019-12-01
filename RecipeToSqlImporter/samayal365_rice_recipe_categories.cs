@@ -12,11 +12,11 @@ namespace RecipeToSqlImporter
     using System;
     using System.Collections.Generic;
     
-    public partial class recipe_categories
+    public partial class samayal365_rice_recipe_categories
     {
-        public recipe_categories()
+        public samayal365_rice_recipe_categories()
         {
-            this.recipes = new HashSet<recipe>();
+            this.samayal365_rice_recipes = new HashSet<samayal365_rice_recipes>();
         }
     
         public int id { get; set; }
@@ -26,6 +26,6 @@ namespace RecipeToSqlImporter
         public string name { get; set; }
         public string image_path { get; set; }
     
-        public virtual ICollection<recipe> recipes { get; set; }
+        public virtual ICollection<samayal365_rice_recipes> samayal365_rice_recipes { get; set; }
     }
 }

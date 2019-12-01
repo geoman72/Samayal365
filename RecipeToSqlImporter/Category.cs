@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipeToSqlImporter
 {
-    public class Recipe
+    public class Category
     {
         /// <summary>
         /// 
@@ -36,22 +36,7 @@ namespace RecipeToSqlImporter
         /// <summary>
         /// 
         /// </summary>
-        public string RecipeDetail { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public int CategoryId { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Ratings { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public int IsFavorite { get; set; }
+        public int Count { get; set; }
 
     }
 }

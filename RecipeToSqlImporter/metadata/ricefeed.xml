@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>
+    <identity>1000</identity>
+    <categoryname>ஃப்ரைடு ரைஸ்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\ஃப்ரைடு ரைஸ்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>2000</identity>
+    <categoryname>இறால் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\இறால் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>3000</identity>
+    <categoryname>இனிப்பு சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\இனிப்பு சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>4000</identity>
+    <categoryname>எலுமிச்சை சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\எலுமிச்சை சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>5000</identity>
+    <categoryname>கஞ்சி</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\கஞ்சி</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>6000</identity>
+    <categoryname>காய்கறி சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\காய்கறி சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>7000</identity>
+    <categoryname>கீரை சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\கீரை சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>8000</identity>
+    <categoryname>சாம்பார் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\சாம்பார் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>9000</identity>
+    <categoryname>சிக்கன் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\சிக்கன் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>10000</identity>
+    <categoryname>தக்காளி சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\தக்காளி சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>11000</identity>
+    <categoryname>தயிர் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\தயிர் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>12000</identity>
+    <categoryname>தானிய சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\தானிய சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>13000</identity>
+    <categoryname>தேங்காய் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\தேங்காய் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>14000</identity>
+    <categoryname>நெய் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\நெய் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>15000</identity>
+    <categoryname>பருப்பு சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\பருப்பு சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>16000</identity>
+    <categoryname>புலாவ்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\புலாவ்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>17000</identity>
+    <categoryname>புளி சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\புளி சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>18000</identity>
+    <categoryname>நறுமண பொருட்களை  சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\நறுமண பொருட்களை  சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>19000</identity>
+    <categoryname>மட்டன் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\மட்டன் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>20000</identity>
+    <categoryname>மற்ற நாடுகள் சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\மற்ற நாடுகள் சாதம்</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>21000</identity>
+    <categoryname>மற்றவை</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\மற்றவை</inputfolderpath>
+  </feed>
+  <feed>
+    <identity>22000</identity>
+    <categoryname>முட்டை சாதம்</categoryname>
+    <inputfolderpath>D:\2018\Source\Repos\Samayal365\RecipeHtmlParser\data\2019\rice\fixed\முட்டை சாதம்</inputfolderpath>
+  </feed>
+</feeds>

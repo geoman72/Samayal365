@@ -25,7 +25,7 @@ namespace RecipeToSqlImporter
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<recipe_categories> recipe_categories { get; set; }
-        public DbSet<recipe> recipes { get; set; }
+        public DbSet<samayal365_rice_recipe_categories> samayal365_rice_recipe_categories { get; set; }
+        public DbSet<samayal365_rice_recipes> samayal365_rice_recipes { get; set; }
     }
 }

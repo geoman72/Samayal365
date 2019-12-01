@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="RecipeToSqlImporter.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="recipe_categories">
+    <Schema Namespace="RecipeToSqlImporter.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="samayal365_rice_recipe_categories">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -13,10 +13,10 @@
           <Property Name="created_at" Type="datetime" Nullable="false" />
           <Property Name="updated_at" Type="datetime" Nullable="false" />
           <Property Name="count" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="image_path" Type="nvarchar" MaxLength="1024" Nullable="false" />
         </EntityType>
-        <EntityType Name="recipes">
+        <EntityType Name="samayal365_rice_recipes">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -29,25 +29,34 @@
           <Property Name="image_path" Type="nvarchar" MaxLength="1024" Nullable="false" />
           <Property Name="is_favorite" Type="bit" Nullable="false" />
           <Property Name="ratings" Type="int" Nullable="false" />
+          <Property Name="rating1_count" Type="int" Nullable="false" />
+          <Property Name="rating2_count" Type="int" Nullable="false" />
+          <Property Name="rating3_count" Type="int" Nullable="false" />
+          <Property Name="rating4_count" Type="int" Nullable="false" />
+          <Property Name="rating5_count" Type="int" Nullable="false" />
+          <Property Name="rating_updated_at" Type="datetime" />
+          <Property Name="rating_total" Type="int" Nullable="false" />
+          <Property Name="recipe_detail_checksum" Type="int" />
+          <Property Name="can_publish" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK_recipes_recipe_categories">
-          <End Role="recipe_categories" Type="Self.recipe_categories" Multiplicity="1" />
-          <End Role="recipes" Type="Self.recipes" Multiplicity="*" />
+        <Association Name="FK_rice_recipe_recipe_categories">
+          <End Role="samayal365_rice_recipe_categories" Type="Self.samayal365_rice_recipe_categories" Multiplicity="1" />
+          <End Role="samayal365_rice_recipes" Type="Self.samayal365_rice_recipes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="recipe_categories">
+            <Principal Role="samayal365_rice_recipe_categories">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="recipes">
+            <Dependent Role="samayal365_rice_recipes">
               <PropertyRef Name="category_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="RecipeToSqlImporterStoreContainer">
-          <EntitySet Name="recipe_categories" EntityType="Self.recipe_categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="recipes" EntityType="Self.recipes" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_recipes_recipe_categories" Association="Self.FK_recipes_recipe_categories">
-            <End Role="recipe_categories" EntitySet="recipe_categories" />
-            <End Role="recipes" EntitySet="recipes" />
+          <EntitySet Name="samayal365_rice_recipe_categories" EntityType="Self.samayal365_rice_recipe_categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samayal365_rice_recipes" EntityType="Self.samayal365_rice_recipes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_rice_recipe_recipe_categories" Association="Self.FK_rice_recipe_recipe_categories">
+            <End Role="samayal365_rice_recipe_categories" EntitySet="samayal365_rice_recipe_categories" />
+            <End Role="samayal365_rice_recipes" EntitySet="samayal365_rice_recipes" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -55,48 +64,57 @@
     <edmx:ConceptualModels>
       <Schema Namespace="RecipeToSqlImporter" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="RecipeModelContext" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="recipe_categories" EntityType="RecipeToSqlImporter.recipe_categories" />
-          <EntitySet Name="recipes" EntityType="RecipeToSqlImporter.recipe" />
-          <AssociationSet Name="FK_recipes_recipe_categories" Association="RecipeToSqlImporter.FK_recipes_recipe_categories">
-            <End Role="recipe_categories" EntitySet="recipe_categories" />
-            <End Role="recipes" EntitySet="recipes" />
+          <EntitySet Name="samayal365_rice_recipe_categories" EntityType="RecipeToSqlImporter.samayal365_rice_recipe_categories" />
+          <EntitySet Name="samayal365_rice_recipes" EntityType="RecipeToSqlImporter.samayal365_rice_recipes" />
+          <AssociationSet Name="FK_rice_recipe_recipe_categories" Association="RecipeToSqlImporter.FK_rice_recipe_recipe_categories">
+            <End Role="samayal365_rice_recipe_categories" EntitySet="samayal365_rice_recipe_categories" />
+            <End Role="samayal365_rice_recipes" EntitySet="samayal365_rice_recipes" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="recipe_categories">
+        <EntityType Name="samayal365_rice_recipe_categories">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="count" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="image_path" Type="String" Nullable="false" MaxLength="1024" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="recipes" Relationship="RecipeToSqlImporter.FK_recipes_recipe_categories" FromRole="recipe_categories" ToRole="recipes" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="samayal365_rice_recipes" Relationship="RecipeToSqlImporter.FK_rice_recipe_recipe_categories" FromRole="samayal365_rice_recipe_categories" ToRole="samayal365_rice_recipes" />
         </EntityType>
-        <EntityType Name="recipe">
+        <EntityType Name="samayal365_rice_recipes">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="image_path" Type="String" Nullable="false" MaxLength="1024" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="recipe_categories" Relationship="RecipeToSqlImporter.FK_recipes_recipe_categories" FromRole="recipes" ToRole="recipe_categories" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="recipe_detail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="is_favorite" Type="Boolean" Nullable="false" />
           <Property Name="ratings" Type="Int32" Nullable="false" />
+          <Property Name="rating1_count" Type="Int32" Nullable="false" />
+          <Property Name="rating2_count" Type="Int32" Nullable="false" />
+          <Property Name="rating3_count" Type="Int32" Nullable="false" />
+          <Property Name="rating4_count" Type="Int32" Nullable="false" />
+          <Property Name="rating5_count" Type="Int32" Nullable="false" />
+          <Property Name="rating_updated_at" Type="DateTime" Precision="3" />
+          <Property Name="rating_total" Type="Int32" Nullable="false" />
+          <Property Name="recipe_detail_checksum" Type="Int32" />
+          <Property Name="can_publish" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="samayal365_rice_recipe_categories" Relationship="RecipeToSqlImporter.FK_rice_recipe_recipe_categories" FromRole="samayal365_rice_recipes" ToRole="samayal365_rice_recipe_categories" />
         </EntityType>
-        <Association Name="FK_recipes_recipe_categories">
-          <End Role="recipe_categories" Type="RecipeToSqlImporter.recipe_categories" Multiplicity="1" />
-          <End Role="recipes" Type="RecipeToSqlImporter.recipe" Multiplicity="*" />
+        <Association Name="FK_rice_recipe_recipe_categories">
+          <End Type="RecipeToSqlImporter.samayal365_rice_recipe_categories" Role="samayal365_rice_recipe_categories" Multiplicity="1" />
+          <End Type="RecipeToSqlImporter.samayal365_rice_recipes" Role="samayal365_rice_recipes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="recipe_categories">
+            <Principal Role="samayal365_rice_recipe_categories">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="recipes">
+            <Dependent Role="samayal365_rice_recipes">
               <PropertyRef Name="category_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -107,30 +125,39 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RecipeToSqlImporterStoreContainer" CdmEntityContainer="RecipeModelContext">
-          <EntitySetMapping Name="recipe_categories">
-            <EntityTypeMapping TypeName="RecipeToSqlImporter.recipe_categories">
-              <MappingFragment StoreEntitySet="recipe_categories">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="name" ColumnName="name" />
+          <EntitySetMapping Name="samayal365_rice_recipe_categories">
+            <EntityTypeMapping TypeName="RecipeToSqlImporter.samayal365_rice_recipe_categories">
+              <MappingFragment StoreEntitySet="samayal365_rice_recipe_categories">
                 <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="recipes">
-            <EntityTypeMapping TypeName="RecipeToSqlImporter.recipe">
-              <MappingFragment StoreEntitySet="recipes">
+          <EntitySetMapping Name="samayal365_rice_recipes">
+            <EntityTypeMapping TypeName="RecipeToSqlImporter.samayal365_rice_recipes">
+              <MappingFragment StoreEntitySet="samayal365_rice_recipes">
+                <ScalarProperty Name="can_publish" ColumnName="can_publish" />
+                <ScalarProperty Name="recipe_detail_checksum" ColumnName="recipe_detail_checksum" />
+                <ScalarProperty Name="rating_total" ColumnName="rating_total" />
+                <ScalarProperty Name="rating_updated_at" ColumnName="rating_updated_at" />
+                <ScalarProperty Name="rating5_count" ColumnName="rating5_count" />
+                <ScalarProperty Name="rating4_count" ColumnName="rating4_count" />
+                <ScalarProperty Name="rating3_count" ColumnName="rating3_count" />
+                <ScalarProperty Name="rating2_count" ColumnName="rating2_count" />
+                <ScalarProperty Name="rating1_count" ColumnName="rating1_count" />
                 <ScalarProperty Name="ratings" ColumnName="ratings" />
                 <ScalarProperty Name="is_favorite" ColumnName="is_favorite" />
-                <ScalarProperty Name="recipe_detail" ColumnName="recipe_detail" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="recipe_detail" ColumnName="recipe_detail" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

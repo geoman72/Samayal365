@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\2014\MyProjects\Samayal365\1.0\code\RecipeToSqlImporter\RecipeModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\2018\Source\Repos\Samayal365\RecipeToSqlImporter\RecipeModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
