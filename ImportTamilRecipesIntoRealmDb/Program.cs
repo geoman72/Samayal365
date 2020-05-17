@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Realms;
@@ -20,6 +21,12 @@ namespace ImportTamilRecipesIntoRealmDb
             //{
             //    prayerRecipesRealm.Add(prayer);
             //});
+
+            List<Category> categoryList = SqHelper.GetCategoriesFromSqlServer();
+
+            List<Recipe> recipeList = SqHelper.GetRecipesFromSqlServer();
+
+            string s;
 
         }
     }

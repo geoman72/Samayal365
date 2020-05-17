@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
-<div itemscope itemtype="http://schema.org/Recipe">
+<div itemscope="" itemtype="http://schema.org/Recipe">
     <h1 itemprop="name"></h1>
     <p>By<span itemprop="author">Mindy Pretner</span></p>
     <div itemprop="description"> "Pita Pizza is a quick snack or meal that can be customized to your liking!"</div>

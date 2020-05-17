@@ -12,26 +12,28 @@ namespace ImportTamilRecipesIntoRealmDb
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="recipeCategoryTableName"></param>
         /// <returns></returns>
-        private static List<Category> GetCategoriesFromSqlServer(String recipeCategoryTableName)
+        public static List<Category> GetCategoriesFromSqlServer()
         {
             List<Category> retValue = new List<Category>();
 
             using (var context = new TamilRecipeEntities())
             {
-                var query= from category in  context.samayal365_briyani_recipe_categories
-                select new Category
-                {
-                    Id = category.id,
-                    Count = category.count,
-                    CreatedOn = category.created_at.Date.ToShortDateString(),
-                    ImagePath = category.image_path,
-                    Name = category.name,
-                    UpdatedOn = category.updated_at.Date.ToShortDateString()
-                };
+                var query = from category in context.samayal365_briyani_recipe_categories
+                    select category;
 
-                retValue.AddRange(query.ToList());
+                foreach (var category in query.ToList())
+                {
+                    retValue.Add(new Category
+                    {
+                        Id = category.id,
+                        Count = category.count,
+                        CreatedOn = category.created_at.Date.ToString("MM-dd-yyyy"),
+                        ImagePath = category.image_path.Split('\\').Last(),
+                        Name = category.name.Trim(),
+                        UpdatedOn = category.updated_at.Date.ToString("MM-dd-yyyy")
+                    });   
+                }
             }
 
             return retValue;
@@ -40,29 +42,31 @@ namespace ImportTamilRecipesIntoRealmDb
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="recipeTableName"></param>
         /// <returns></returns>
-        private static List<Recipe> GetRecipesFromSqlServer(String recipeTableName)
+        public static List<Recipe> GetRecipesFromSqlServer()
         {
             List<Recipe> retValue = new List<Recipe>();
 
             using (var context = new TamilRecipeEntities())
             {
                 var query = from recipe in context.samayal365_briyani_recipes
-                    select new Recipe
+                    select recipe;
+
+                foreach (var recipe in query.ToList())
+                {
+                    retValue.Add( new Recipe
                     {
                         CategoryId = recipe.category_id,
-                        CreatedOn = recipe.created_at.Date.ToShortDateString(),
+                        CreatedOn = recipe.created_at.Date.ToString("MM-dd-yyyy"),
                         Id = recipe.id,
-                        ImagePath = recipe.,
+                        ImagePath = recipe.image_path.Split('\\').Last(),
                         IsFavorite = recipe.is_favorite == true ? 1 : 0,
-                        Name = recipe.name,
+                        Name = recipe.name.Trim(),
                         Ratings = recipe.ratings,
                         RecipeDetail = recipe.recipe_detail,
-                        UpdatedOn = recipe.updated_at.Date.ToShortDateString()
-                    };
-
-                retValue.AddRange(query.ToList());
+                        UpdatedOn = recipe.updated_at.Date.ToString("MM-dd-yyyy")
+                    });
+                }
             }
 
             return retValue;
