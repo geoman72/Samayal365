@@ -128,6 +128,7 @@
     <Compile Include="samayal365_tiffin_recipe_categories.cs">
       <DependentUpon>TamilRecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SqHelper.cs" />
     <Compile Include="TamilRecipeModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
