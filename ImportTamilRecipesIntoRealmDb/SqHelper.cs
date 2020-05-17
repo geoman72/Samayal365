@@ -61,7 +61,7 @@ namespace ImportTamilRecipesIntoRealmDb
                         Id = recipe.id,
                         ImagePath = recipe.image_path.Split('\\').Last(),
                         IsFavorite = recipe.is_favorite == true ? 1 : 0,
-                        Name = recipe.name.Trim(),
+                        Name = recipe.name.Replace("&gt;","").Trim(),
                         Ratings = recipe.ratings,
                         RecipeDetail = recipe.recipe_detail,
                         UpdatedOn = recipe.updated_at.Date.ToString("MM-dd-yyyy")

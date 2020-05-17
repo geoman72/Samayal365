@@ -168,6 +168,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TamilRecipeModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="RelmnDb\briyanirecipes.realm" />
+    <None Include="RelmnDb\briyanirecipes.realm.lock" />
     <None Include="TamilRecipeModel.edmx.diagram">
       <DependentUpon>TamilRecipeModel.edmx</DependentUpon>
     </None>
@@ -176,7 +178,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="RelmnDb\" />
+    <Folder Include="RelmnDb\briyanirecipes.realm.management\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
