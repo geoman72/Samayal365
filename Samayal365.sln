@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateSqlStatement", "GenerateSqlStatement\GenerateSqlStatement.csproj", "{3189E65E-04E4-4B19-8781-AFBE4B928FDB}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeHtmlParser", "RecipeHtmlParser\RecipeHtmlParser.csproj", "{413072F7-E31F-42B3-8F20-88529111FF90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeToSqlImporter", "RecipeToSqlImporter\RecipeToSqlImporter.csproj", "{36FF29C5-7EA3-4500-AED5-056B2B532079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportTamilRecipesIntoRealmDb", "ImportTamilRecipesIntoRealmDb\ImportTamilRecipesIntoRealmDb.csproj", "{939C1487-5E0D-4075-B753-2A8FCD3D84DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{36FF29C5-7EA3-4500-AED5-056B2B532079}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36FF29C5-7EA3-4500-AED5-056B2B532079}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36FF29C5-7EA3-4500-AED5-056B2B532079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939C1487-5E0D-4075-B753-2A8FCD3D84DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939C1487-5E0D-4075-B753-2A8FCD3D84DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939C1487-5E0D-4075-B753-2A8FCD3D84DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939C1487-5E0D-4075-B753-2A8FCD3D84DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE3A1765-22BF-4671-9CFF-B2AFE3E93AE9}
 	EndGlobalSection
 EndGlobal
