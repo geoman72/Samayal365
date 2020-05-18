@@ -10,49 +10,78 @@ namespace ImportTamilRecipesIntoRealmDb
     public class Recipe : RealmObject
     {
         /// <summary>
-        /// 
+        /// Gets or sets the identifier.
         /// </summary>
+        /// <value>The identifier.</value>
         [PrimaryKey]
         public int Id { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the name.
         /// </summary>
-        public string CreatedOn { get; set; }
+        /// <value>The name.</value>
+        public String Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image path.
+        /// </summary>
+        /// <value>The image path.</value>
+        public String ImagePath { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string UpdatedOn { get; set; }
+        public String Description { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the is favorite.
         /// </summary>
-        public string Name { get; set; }
+        /// <value>The is favorite.</value>
+        public int IsFavorite { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the ratings.
         /// </summary>
-        public string ImagePath { get; set; }
+        /// <value>The ratings.</value>
+        public int Rating { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets my ratings.
         /// </summary>
-        public string RecipeDetail { get; set; }
+        /// <value>My ratings.</value>
+        public int MyRating { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the created at.
         /// </summary>
+        /// <value>The created at.</value>
+        public String CreatedOn { get; set; }
+
+        /// <summary>
+        /// Gets or sets the updated at.
+        /// </summary>
+        /// <value>The updated at.</value>
+        public String UpdatedOn { get; set; }
+
+        /// <summary>
+        /// Gets or sets the category identifier.
+        /// </summary>
+        /// <value>The category identifier.</value>
         public int CategoryId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int Ratings { get; set; }
+        public String MyRatingUpdatedAt { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int IsFavorite { get; set; }
+        public int SyncMyRating { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int RatingTotal { get; set; }
     }
 }

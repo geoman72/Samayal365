@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ImportTamilRecipesIntoRealmDb.RelmnDb;
 using Realms;
 
 namespace ImportTamilRecipesIntoRealmDb
@@ -29,8 +30,11 @@ namespace ImportTamilRecipesIntoRealmDb
 
             }
 
-            List<Recipe> recipeList = SqHelper.GetRecipesFromSqlServer();
+            System.Diagnostics.Trace.WriteLine("Successfully imported categories.");
+            Logger.Info("Successfully imported categories.");
 
+
+            List<Recipe> recipeList = SqHelper.GetRecipesFromSqlServer();
             foreach (Recipe recipe in recipeList)
             {
                 Logger.Info(recipe.Name);
@@ -42,7 +46,20 @@ namespace ImportTamilRecipesIntoRealmDb
                
             }
 
-            string s = "gest";
+            System.Diagnostics.Trace.WriteLine("Successfully imported recipes.");
+            Logger.Info("Successfully imported recipes.");
+
+            foreach (RecipeConfig recipeConfig in SqHelper.GetRecipeConfigList())
+            {
+                recipesRealm.Write(() =>
+                {
+                    recipesRealm.Add(recipeConfig);
+                });
+            }
+
+            System.Diagnostics.Trace.WriteLine("Successfully imported recipe config.");
+            Logger.Info("Successfully imported recipe config.");
+
 
         }
     }

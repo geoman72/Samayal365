@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImportTamilRecipesIntoRealmDb.RelmnDb;
 using Remotion.Linq.Clauses;
 
 namespace ImportTamilRecipesIntoRealmDb
@@ -27,7 +28,6 @@ namespace ImportTamilRecipesIntoRealmDb
                     retValue.Add(new Category
                     {
                         Id = category.id,
-                        Count = category.count,
                         CreatedOn = category.created_at.Date.ToString("MM-dd-yyyy"),
                         ImagePath = category.image_path.Split('\\').Last(),
                         Name = category.name.Trim(),
@@ -62,9 +62,13 @@ namespace ImportTamilRecipesIntoRealmDb
                         ImagePath = recipe.image_path.Split('\\').Last(),
                         IsFavorite = recipe.is_favorite == true ? 1 : 0,
                         Name = recipe.name.Replace("&gt;","").Trim(),
-                        Ratings = recipe.ratings,
-                        RecipeDetail = recipe.recipe_detail,
-                        UpdatedOn = recipe.updated_at.Date.ToString("MM-dd-yyyy")
+                        Rating = recipe.ratings,
+                        Description = recipe.recipe_detail,
+                        UpdatedOn = recipe.updated_at.Date.ToString("MM-dd-yyyy"),
+                        MyRating = 0,
+                        MyRatingUpdatedAt = null,
+                        RatingTotal = recipe.rating_total,
+                        SyncMyRating = 0
                     });
                 }
             }
@@ -72,5 +76,24 @@ namespace ImportTamilRecipesIntoRealmDb
             return retValue;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<RecipeConfig> GetRecipeConfigList()
+        {
+            List<RecipeConfig> retValue = new List<RecipeConfig>();
+
+            retValue.Add(new RecipeConfig
+            {
+                Id = 1,
+                CreatedOn = DateTime.Today.Date.ToString("dd-M-yyyy"),
+                UpdatedOn = DateTime.Today.Date.ToString("dd-M-yyyy"),
+                NextSyncAt = null,
+                ClientId = null
+            });
+
+            return retValue;
+        }
     }
 }

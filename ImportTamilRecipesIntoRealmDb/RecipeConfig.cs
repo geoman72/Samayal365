@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Realms;
 
-namespace ImportTamilRecipesIntoRealmDb
+namespace ImportTamilRecipesIntoRealmDb.RelmnDb
 {
-    public class Category : RealmObject
+    public class RecipeConfig : RealmObject
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -15,18 +15,6 @@ namespace ImportTamilRecipesIntoRealmDb
         /// <value>The identifier.</value>
         [PrimaryKey]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public String Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the image path.
-        /// </summary>
-        /// <value>The image path.</value>
-        public String ImagePath { get; set; }
 
         /// <summary>
         /// Gets or sets the created on.
@@ -40,6 +28,14 @@ namespace ImportTamilRecipesIntoRealmDb
         /// <value>The updated on.</value>
         public String UpdatedOn { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public String NextSyncAt { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public String ClientId { get; set; }
     }
 }
