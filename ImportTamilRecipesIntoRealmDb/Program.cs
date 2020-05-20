@@ -15,35 +15,40 @@ namespace ImportTamilRecipesIntoRealmDb
 
         static void Main(string[] args)
         {
-            RealmConfiguration config = new RealmConfiguration(@"D:\2018\Source\Repos\Samayal365\ImportTamilRecipesIntoRealmDb\RelmnDb\briyanirecipes.realm");
+            // ImportBriyaniRecipes();
+            ImportChettinadRecipes();
+
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void ImportBriyaniRecipes()
+        {
+            RealmConfiguration config =
+                new RealmConfiguration(
+                    @"D:\2018\Source\Repos\Samayal365\ImportTamilRecipesIntoRealmDb\RelmnDb\briyanirecipes.realm");
             Realm recipesRealm = Realm.GetInstance(config);
 
-            List<Category> categoryList = SqHelper.GetCategoriesFromSqlServer();
+            List<Category> categoryList = SqHelper.GetBriyaniCategoriesFromSqlServer();
             foreach (Category category in categoryList)
             {
                 Logger.Info(category.Name);
 
-                recipesRealm.Write(() =>
-                {
-                    recipesRealm.Add(category);
-                });
-
+                recipesRealm.Write(() => { recipesRealm.Add(category); });
             }
 
             System.Diagnostics.Trace.WriteLine("Successfully imported categories.");
             Logger.Info("Successfully imported categories.");
 
 
-            List<Recipe> recipeList = SqHelper.GetRecipesFromSqlServer();
+            List<Recipe> recipeList = SqHelper.GetBriyaniRecipesFromSqlServer();
             foreach (Recipe recipe in recipeList)
             {
                 Logger.Info(recipe.Name);
 
-                recipesRealm.Write(() =>
-                {
-                    recipesRealm.Add(recipe);
-                }); 
-               
+                recipesRealm.Write(() => { recipesRealm.Add(recipe); });
             }
 
             System.Diagnostics.Trace.WriteLine("Successfully imported recipes.");
@@ -51,16 +56,53 @@ namespace ImportTamilRecipesIntoRealmDb
 
             foreach (RecipeConfig recipeConfig in SqHelper.GetRecipeConfigList())
             {
-                recipesRealm.Write(() =>
-                {
-                    recipesRealm.Add(recipeConfig);
-                });
+                recipesRealm.Write(() => { recipesRealm.Add(recipeConfig); });
             }
 
             System.Diagnostics.Trace.WriteLine("Successfully imported recipe config.");
             Logger.Info("Successfully imported recipe config.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void ImportChettinadRecipes()
+        {
+            RealmConfiguration config =
+                new RealmConfiguration(
+                    @"D:\2018\Source\Repos\Samayal365\ImportTamilRecipesIntoRealmDb\RelmnDb\Chettinadrecipes.realm");
+            Realm recipesRealm = Realm.GetInstance(config);
+
+            List<Category> categoryList = SqHelper.GetChettinadCategoriesFromSqlServer();
+            foreach (Category category in categoryList)
+            {
+                Logger.Info(category.Name);
+
+                recipesRealm.Write(() => { recipesRealm.Add(category); });
+            }
+
+            System.Diagnostics.Trace.WriteLine("Successfully imported categories.");
+            Logger.Info("Successfully imported categories.");
 
 
+            List<Recipe> recipeList = SqHelper.GetChettinadRecipesFromSqlServer();
+            foreach (Recipe recipe in recipeList)
+            {
+                Logger.Info(recipe.Name);
+
+                recipesRealm.Write(() => { recipesRealm.Add(recipe); });
+            }
+
+            System.Diagnostics.Trace.WriteLine("Successfully imported recipes.");
+            Logger.Info("Successfully imported recipes.");
+
+            foreach (RecipeConfig recipeConfig in SqHelper.GetRecipeConfigList())
+            {
+                recipesRealm.Write(() => { recipesRealm.Add(recipeConfig); });
+            }
+
+            System.Diagnostics.Trace.WriteLine("Successfully imported recipe config.");
+            Logger.Info("Successfully imported recipe config.");
         }
     }
 }
