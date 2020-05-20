@@ -120,6 +120,12 @@
     <Compile Include="samayal365_chettinadu_recipes.cs">
       <DependentUpon>TamilRecipeModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="samayal365_chettinadu_recipe_categories.cs">
+      <DependentUpon>TamilRecipeModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="samayal365_chutney_recipes.cs">
+      <DependentUpon>TamilRecipeModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="samayal365_chutney_recipe_categories.cs">
       <DependentUpon>TamilRecipeModel.tt</DependentUpon>
     </Compile>
@@ -171,6 +177,8 @@
     </EntityDeploy>
     <None Include="RelmnDb\briyanirecipes.realm" />
     <None Include="RelmnDb\briyanirecipes.realm.lock" />
+    <None Include="RelmnDb\Chettinadrecipes.realm" />
+    <None Include="RelmnDb\Chettinadrecipes.realm.lock" />
     <None Include="TamilRecipeModel.edmx.diagram">
       <DependentUpon>TamilRecipeModel.edmx</DependentUpon>
     </None>

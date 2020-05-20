@@ -12,7 +12,7 @@ namespace ImportTamilRecipesIntoRealmDb
     using System;
     using System.Collections.Generic;
     
-    public partial class samayal365_chettinadu_recipes
+    public partial class samayal365_chutney_recipes
     {
         public int id { get; set; }
         public System.DateTime created_at { get; set; }
@@ -33,6 +33,6 @@ namespace ImportTamilRecipesIntoRealmDb
         public Nullable<int> recipe_detail_checksum { get; set; }
         public bool can_publish { get; set; }
     
-        public virtual samayal365_chettinadu_recipe_categories samayal365_chettinadu_recipe_categories { get; set; }
+        public virtual samayal365_chutney_recipe_categories samayal365_chutney_recipe_categories { get; set; }
     }
 }

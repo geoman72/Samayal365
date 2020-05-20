@@ -13,6 +13,10 @@
         <EntityTypeShape EntityType="TamilRecipeModel.samayal365_tiffin_recipes" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="TamilRecipeModel.FK_briyani_recipe_recipe_categories" ManuallyRouted="false" />
         <AssociationConnector Association="TamilRecipeModel.FK_recipes_samayal365_tiffin_recipe_categories" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TamilRecipeModel.samayal365_chettinadu_recipe_categories" Width="1.5" PointX="0.75" PointY="12.875" />
+        <EntityTypeShape EntityType="TamilRecipeModel.samayal365_chutney_recipes" Width="1.5" PointX="5" PointY="6.625" />
+        <AssociationConnector Association="TamilRecipeModel.FK_recipes_samayal365_chettinadu_recipe_categories" />
+        <AssociationConnector Association="TamilRecipeModel.FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

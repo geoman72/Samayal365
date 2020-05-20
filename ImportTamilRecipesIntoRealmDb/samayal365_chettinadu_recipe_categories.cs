@@ -12,12 +12,12 @@ namespace ImportTamilRecipesIntoRealmDb
     using System;
     using System.Collections.Generic;
     
-    public partial class samayal365_chutney_recipe_categories
+    public partial class samayal365_chettinadu_recipe_categories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public samayal365_chutney_recipe_categories()
+        public samayal365_chettinadu_recipe_categories()
         {
-            this.samayal365_chutney_recipes = new HashSet<samayal365_chutney_recipes>();
+            this.samayal365_chettinadu_recipes = new HashSet<samayal365_chettinadu_recipes>();
         }
     
         public int id { get; set; }
@@ -28,6 +28,6 @@ namespace ImportTamilRecipesIntoRealmDb
         public string image_path { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<samayal365_chutney_recipes> samayal365_chutney_recipes { get; set; }
+        public virtual ICollection<samayal365_chettinadu_recipes> samayal365_chettinadu_recipes { get; set; }
     }
 }

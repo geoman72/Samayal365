@@ -31,5 +31,7 @@ namespace ImportTamilRecipesIntoRealmDb
         public virtual DbSet<samayal365_chutney_recipe_categories> samayal365_chutney_recipe_categories { get; set; }
         public virtual DbSet<samayal365_tiffin_recipe_categories> samayal365_tiffin_recipe_categories { get; set; }
         public virtual DbSet<samayal365_tiffin_recipes> samayal365_tiffin_recipes { get; set; }
+        public virtual DbSet<samayal365_chettinadu_recipe_categories> samayal365_chettinadu_recipe_categories { get; set; }
+        public virtual DbSet<samayal365_chutney_recipes> samayal365_chutney_recipes { get; set; }
     }
 }

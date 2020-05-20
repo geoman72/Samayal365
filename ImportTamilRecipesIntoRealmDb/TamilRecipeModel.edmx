@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TamilRecipeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TamilRecipeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="samayal365_briyani_recipe_categories">
           <Key>
             <PropertyRef Name="id" />
@@ -39,6 +39,17 @@
           <Property Name="recipe_detail_checksum" Type="int" />
           <Property Name="can_publish" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="samayal365_chettinadu_recipe_categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="image_path" Type="nvarchar" MaxLength="1024" Nullable="false" />
+        </EntityType>
         <EntityType Name="samayal365_chettinadu_recipes">
           <Key>
             <PropertyRef Name="id" />
@@ -72,6 +83,29 @@
           <Property Name="count" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="image_path" Type="nvarchar" MaxLength="1024" Nullable="false" />
+        </EntityType>
+        <EntityType Name="samayal365_chutney_recipes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="recipe_detail" Type="ntext" Nullable="false" />
+          <Property Name="image_path" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="is_favorite" Type="bit" Nullable="false" />
+          <Property Name="ratings" Type="int" Nullable="false" />
+          <Property Name="rating1_count" Type="int" Nullable="false" />
+          <Property Name="rating2_count" Type="int" Nullable="false" />
+          <Property Name="rating3_count" Type="int" Nullable="false" />
+          <Property Name="rating4_count" Type="int" Nullable="false" />
+          <Property Name="rating5_count" Type="int" Nullable="false" />
+          <Property Name="rating_updated_at" Type="datetime" />
+          <Property Name="rating_total" Type="int" Nullable="false" />
+          <Property Name="recipe_detail_checksum" Type="int" />
+          <Property Name="can_publish" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="samayal365_tiffin_recipe_categories">
           <Key>
@@ -119,6 +153,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_recipes_samayal365_chettinadu_recipe_categories">
+          <End Role="samayal365_chettinadu_recipe_categories" Type="Self.samayal365_chettinadu_recipe_categories" Multiplicity="1" />
+          <End Role="samayal365_chettinadu_recipes" Type="Self.samayal365_chettinadu_recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="samayal365_chettinadu_recipe_categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="samayal365_chettinadu_recipes">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_recipes_samayal365_tiffin_recipe_categories">
           <End Role="samayal365_tiffin_recipe_categories" Type="Self.samayal365_tiffin_recipe_categories" Multiplicity="1" />
           <End Role="samayal365_tiffin_recipes" Type="Self.samayal365_tiffin_recipes" Multiplicity="*" />
@@ -131,24 +177,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories">
+          <End Role="samayal365_chutney_recipe_categories" Type="Self.samayal365_chutney_recipe_categories" Multiplicity="1" />
+          <End Role="samayal365_chutney_recipes" Type="Self.samayal365_chutney_recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="samayal365_chutney_recipe_categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="samayal365_chutney_recipes">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TamilRecipeModelStoreContainer">
           <EntitySet Name="samayal365_briyani_recipe_categories" EntityType="Self.samayal365_briyani_recipe_categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="samayal365_briyani_recipes" EntityType="Self.samayal365_briyani_recipes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samayal365_chettinadu_recipe_categories" EntityType="Self.samayal365_chettinadu_recipe_categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="samayal365_chettinadu_recipes" EntityType="Self.samayal365_chettinadu_recipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="samayal365_chutney_recipe_categories" EntityType="Self.samayal365_chutney_recipe_categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samayal365_chutney_recipes" EntityType="Self.samayal365_chutney_recipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="samayal365_tiffin_recipe_categories" EntityType="Self.samayal365_tiffin_recipe_categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="samayal365_tiffin_recipes" EntityType="Self.samayal365_tiffin_recipes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_briyani_recipe_recipe_categories" Association="Self.FK_briyani_recipe_recipe_categories">
             <End Role="samayal365_briyani_recipe_categories" EntitySet="samayal365_briyani_recipe_categories" />
             <End Role="samayal365_briyani_recipes" EntitySet="samayal365_briyani_recipes" />
           </AssociationSet>
+          <AssociationSet Name="FK_recipes_samayal365_chettinadu_recipe_categories" Association="Self.FK_recipes_samayal365_chettinadu_recipe_categories">
+            <End Role="samayal365_chettinadu_recipe_categories" EntitySet="samayal365_chettinadu_recipe_categories" />
+            <End Role="samayal365_chettinadu_recipes" EntitySet="samayal365_chettinadu_recipes" />
+          </AssociationSet>
           <AssociationSet Name="FK_recipes_samayal365_tiffin_recipe_categories" Association="Self.FK_recipes_samayal365_tiffin_recipe_categories">
             <End Role="samayal365_tiffin_recipe_categories" EntitySet="samayal365_tiffin_recipe_categories" />
             <End Role="samayal365_tiffin_recipes" EntitySet="samayal365_tiffin_recipes" />
           </AssociationSet>
+          <AssociationSet Name="FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories" Association="Self.FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories">
+            <End Role="samayal365_chutney_recipe_categories" EntitySet="samayal365_chutney_recipe_categories" />
+            <End Role="samayal365_chutney_recipes" EntitySet="samayal365_chutney_recipes" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TamilRecipeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -210,6 +277,7 @@
           <Property Name="rating_total" Type="Int32" Nullable="false" />
           <Property Name="recipe_detail_checksum" Type="Int32" />
           <Property Name="can_publish" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="samayal365_chettinadu_recipe_categories" Relationship="TamilRecipeModel.FK_recipes_samayal365_chettinadu_recipe_categories" FromRole="samayal365_chettinadu_recipes" ToRole="samayal365_chettinadu_recipe_categories" />
         </EntityType>
         <EntityType Name="samayal365_chutney_recipe_categories">
           <Key>
@@ -221,6 +289,7 @@
           <Property Name="count" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="image_path" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="samayal365_chutney_recipes" Relationship="TamilRecipeModel.FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories" FromRole="samayal365_chutney_recipe_categories" ToRole="samayal365_chutney_recipes" />
         </EntityType>
         <EntityType Name="samayal365_tiffin_recipe_categories">
           <Key>
@@ -297,7 +366,77 @@
             <End Role="samayal365_tiffin_recipe_categories" EntitySet="samayal365_tiffin_recipe_categories" />
             <End Role="samayal365_tiffin_recipes" EntitySet="samayal365_tiffin_recipes" />
           </AssociationSet>
+          <EntitySet Name="samayal365_chettinadu_recipe_categories" EntityType="TamilRecipeModel.samayal365_chettinadu_recipe_categories" />
+          <EntitySet Name="samayal365_chutney_recipes" EntityType="TamilRecipeModel.samayal365_chutney_recipes" />
+          <AssociationSet Name="FK_recipes_samayal365_chettinadu_recipe_categories" Association="TamilRecipeModel.FK_recipes_samayal365_chettinadu_recipe_categories">
+            <End Role="samayal365_chettinadu_recipe_categories" EntitySet="samayal365_chettinadu_recipe_categories" />
+            <End Role="samayal365_chettinadu_recipes" EntitySet="samayal365_chettinadu_recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories" Association="TamilRecipeModel.FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories">
+            <End Role="samayal365_chutney_recipe_categories" EntitySet="samayal365_chutney_recipe_categories" />
+            <End Role="samayal365_chutney_recipes" EntitySet="samayal365_chutney_recipes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="samayal365_chettinadu_recipe_categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="samayal365_chettinadu_recipes" Relationship="TamilRecipeModel.FK_recipes_samayal365_chettinadu_recipe_categories" FromRole="samayal365_chettinadu_recipe_categories" ToRole="samayal365_chettinadu_recipes" />
+        </EntityType>
+        <EntityType Name="samayal365_chutney_recipes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="recipe_detail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="is_favorite" Type="Boolean" Nullable="false" />
+          <Property Name="ratings" Type="Int32" Nullable="false" />
+          <Property Name="rating1_count" Type="Int32" Nullable="false" />
+          <Property Name="rating2_count" Type="Int32" Nullable="false" />
+          <Property Name="rating3_count" Type="Int32" Nullable="false" />
+          <Property Name="rating4_count" Type="Int32" Nullable="false" />
+          <Property Name="rating5_count" Type="Int32" Nullable="false" />
+          <Property Name="rating_updated_at" Type="DateTime" Precision="3" />
+          <Property Name="rating_total" Type="Int32" Nullable="false" />
+          <Property Name="recipe_detail_checksum" Type="Int32" />
+          <Property Name="can_publish" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="samayal365_chutney_recipe_categories" Relationship="TamilRecipeModel.FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories" FromRole="samayal365_chutney_recipes" ToRole="samayal365_chutney_recipe_categories" />
+        </EntityType>
+        <Association Name="FK_recipes_samayal365_chettinadu_recipe_categories">
+          <End Type="TamilRecipeModel.samayal365_chettinadu_recipe_categories" Role="samayal365_chettinadu_recipe_categories" Multiplicity="1" />
+          <End Type="TamilRecipeModel.samayal365_chettinadu_recipes" Role="samayal365_chettinadu_recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="samayal365_chettinadu_recipe_categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="samayal365_chettinadu_recipes">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_samayal365_chutney_recipes_samayal365_chutney_recipe_categories">
+          <End Type="TamilRecipeModel.samayal365_chutney_recipe_categories" Role="samayal365_chutney_recipe_categories" Multiplicity="1" />
+          <End Type="TamilRecipeModel.samayal365_chutney_recipes" Role="samayal365_chutney_recipes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="samayal365_chutney_recipe_categories">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="samayal365_chutney_recipes">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -409,6 +548,42 @@
                 <ScalarProperty Name="rating_total" ColumnName="rating_total" />
                 <ScalarProperty Name="recipe_detail_checksum" ColumnName="recipe_detail_checksum" />
                 <ScalarProperty Name="can_publish" ColumnName="can_publish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="samayal365_chettinadu_recipe_categories">
+            <EntityTypeMapping TypeName="TamilRecipeModel.samayal365_chettinadu_recipe_categories">
+              <MappingFragment StoreEntitySet="samayal365_chettinadu_recipe_categories">
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="samayal365_chutney_recipes">
+            <EntityTypeMapping TypeName="TamilRecipeModel.samayal365_chutney_recipes">
+              <MappingFragment StoreEntitySet="samayal365_chutney_recipes">
+                <ScalarProperty Name="can_publish" ColumnName="can_publish" />
+                <ScalarProperty Name="recipe_detail_checksum" ColumnName="recipe_detail_checksum" />
+                <ScalarProperty Name="rating_total" ColumnName="rating_total" />
+                <ScalarProperty Name="rating_updated_at" ColumnName="rating_updated_at" />
+                <ScalarProperty Name="rating5_count" ColumnName="rating5_count" />
+                <ScalarProperty Name="rating4_count" ColumnName="rating4_count" />
+                <ScalarProperty Name="rating3_count" ColumnName="rating3_count" />
+                <ScalarProperty Name="rating2_count" ColumnName="rating2_count" />
+                <ScalarProperty Name="rating1_count" ColumnName="rating1_count" />
+                <ScalarProperty Name="ratings" ColumnName="ratings" />
+                <ScalarProperty Name="is_favorite" ColumnName="is_favorite" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="recipe_detail" ColumnName="recipe_detail" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

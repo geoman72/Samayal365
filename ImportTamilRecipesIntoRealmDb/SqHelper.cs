@@ -86,7 +86,7 @@ namespace ImportTamilRecipesIntoRealmDb
 
             using (var context = new TamilRecipeEntities())
             {
-                var query = from category in context.samayal365_chettinadu_recipes
+                var query = from category in context.samayal365_chettinadu_recipe_categories
                             select category;
 
                 foreach (var category in query.ToList())
