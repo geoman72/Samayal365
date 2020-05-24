@@ -13,6 +13,7 @@ using System.Xml;
 using ImportTamilRecipesIntoRealmDb.RelmnDb;
 using MetaWeblogApiWebApp.Models;
 using Microsoft.ApplicationBlocks.Data;
+using NLog.Fluent;
 using Remotion.Linq.Clauses;
 
 namespace ImportTamilRecipesIntoRealmDb
@@ -33,10 +34,12 @@ namespace ImportTamilRecipesIntoRealmDb
                 , "select * from " + tableName + " order by id"
             );
 
+            Program.Logger.Info("------------------------- Categories  ---------------");
             while (sqlDataReader.Read())
             {
+                Program.Logger.Info(String.Format("Id => {0}, Name => {1}", sqlDataReader["id"].ToString(), sqlDataReader["name"].ToString()));
                 retValue.Add(new Category
-                {
+                { 
                     Id = int.Parse(sqlDataReader["id"].ToString()),
                     CreatedOn = System.DateTime.Parse(sqlDataReader["created_at"].ToString()).Date.ToString("MM-dd-yyyy"),
                     ImagePath = sqlDataReader["image_path"].ToString().Split('\\').Last(),
@@ -59,11 +62,13 @@ namespace ImportTamilRecipesIntoRealmDb
 
             SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(this.GetGodaddyConnectionString()
                 , CommandType.Text
-                , "select * from " + tableName + " order by id"
+                , "select * from " + tableName + " where id <> 1016 order by id"
             );
 
+            Program.Logger.Info("------------------------- Recipes ---------------");
             while (sqlDataReader.Read())
             {
+                Program.Logger.Info(String.Format("Id => {0}, Name => {1}", sqlDataReader["id"].ToString(), sqlDataReader["name"].ToString()));
                 retValue.Add(new Recipe
                 {
                     CategoryId = int.Parse(sqlDataReader["category_id"].ToString()),
