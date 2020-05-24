@@ -24,7 +24,7 @@ namespace ImportTamilRecipesIntoRealmDb
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        private List<Category> GetCategoryList(string tableName)
+        public List<Category> GetCategoryList(string tableName)
         {
             List<Category> retValue = new List<Category>();
 
@@ -85,173 +85,7 @@ namespace ImportTamilRecipesIntoRealmDb
             return retValue;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private String GetGodaddyConnectionString()
-        {
-            return System.Configuration.ConfigurationManager.ConnectionStrings["goDaddyConStr"].ToString();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Category> GetBriyaniCategoriesFromSqlServer()
-        {
-            return this.GetCategoryList("samayal365_briyani_recipe_categories");
-
-            //List<Category> retValue = new List<Category>();
-
-            //using (var context = new TamilRecipeEntities())
-            //{
-            //    var query = from category in context.samayal365_briyani_recipe_categories
-            //        select category;
-
-            //    foreach (var category in query.ToList())
-            //    {
-            //        retValue.Add(new Category
-            //        {
-            //            Id = category.id,
-            //            CreatedOn = category.created_at.Date.ToString("MM-dd-yyyy"),
-            //            ImagePath = category.image_path.Split('\\').Last(),
-            //            Name = category.name.Trim(),
-            //            UpdatedOn = category.updated_at.Date.ToString("MM-dd-yyyy")
-            //        });   
-            //    }
-            //}
-
-            //return retValue;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public List<Recipe> GetBriyaniRecipesFromSqlServer()
-        {
-            return this.GetRecipesList("samayal365_briyani_recipes");
-            //List<Recipe> retValue = new List<Recipe>();
-
-            //using (var context = new TamilRecipeEntities())
-            //{
-            //    var query = from recipe in context.samayal365_briyani_recipes
-            //        select recipe;
-
-            //    foreach (var recipe in query.ToList())
-            //    {
-            //        retValue.Add( new Recipe
-            //        {
-            //            CategoryId = recipe.category_id,
-            //            CreatedOn = recipe.created_at.Date.ToString("MM-dd-yyyy"),
-            //            Id = recipe.id,
-            //            ImagePath = recipe.image_path.Split('\\').Last(),
-            //            IsFavorite = recipe.is_favorite == true ? 1 : 0,
-            //            Name = recipe.name.Replace("&gt;","").Trim(),
-            //            Rating = recipe.ratings,
-            //            Description = SteralizeAndValidateRecipeDetail(recipe.recipe_detail),
-            //            UpdatedOn = recipe.updated_at.Date.ToString("MM-dd-yyyy"),
-            //            MyRating = 0,
-            //            MyRatingUpdatedAt = null,
-            //            RatingTotal = recipe.rating_total,
-            //            SyncMyRating = 0
-            //        });
-            //    }
-            //}
-
-            //return retValue;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public  List<Category> GetChettinadCategoriesFromSqlServer()
-        {
-            List<Category> retValue = new List<Category>();
-
-            using (var context = new TamilRecipeEntities())
-            {
-                var query = from category in context.samayal365_chettinadu_recipe_categories
-                            select category;
-
-                foreach (var category in query.ToList())
-                {
-                    retValue.Add(new Category
-                    {
-                        Id = category.id,
-                        CreatedOn = category.created_at.Date.ToString("MM-dd-yyyy"),
-                        ImagePath = category.image_path.Split('\\').Last(),
-                        Name = category.name.Trim(),
-                        UpdatedOn = category.updated_at.Date.ToString("MM-dd-yyyy")
-                    });
-                }
-            }
-
-            return retValue;
-        }
-
-        /// <summary
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private  String SteralizeAndValidateRecipeDetail(String recipeDetail)
-        {
-            String retValue = Regex.Replace(recipeDetail, @"\s+", " ");
-            retValue = retValue.Replace(System.Environment.NewLine, System.String.Empty);
-            retValue = retValue.Replace("<strong>", System.String.Empty);
-            retValue = retValue.Replace(@"</strong>", System.String.Empty);
-            TamilRecipeValidationUtility recipeValidation = new TamilRecipeValidationUtility();
-            recipeValidation.IsValidRecipeDescription(retValue);
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(retValue);
-            retValue = xmlDoc.OuterXml;
-            return retValue;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public  List<Recipe> GetChettinadRecipesFromSqlServer()
-        {
-            return this.GetRecipesList("samayal365_chettinadu_recipes");
-            //List<Recipe> retValue = new List<Recipe>();
-
-            //using (var context = new TamilRecipeEntities())
-            //{
-            //    var query = from recipe in context.samayal365_chettinadu_recipes
-            //            select recipe
-            //        ;
-
-            //    foreach (var recipe in query.ToList())
-            //    {
-            //        //Program.Logger.Info("validating recipe => " + recipe.id.ToString());
-
-            //        retValue.Add(new Recipe
-            //        {
-            //            CategoryId = recipe.category_id,
-            //            CreatedOn = recipe.created_at.Date.ToString("MM-dd-yyyy"),
-            //            Id = recipe.id,
-            //            ImagePath = recipe.image_path.Split('\\').Last(),
-            //            IsFavorite = recipe.is_favorite == true ? 1 : 0,
-            //            Name = recipe.name.Replace("&gt;", "").Trim(),
-            //            Rating = recipe.ratings,
-            //            Description = SteralizeAndValidateRecipeDetail(recipe.recipe_detail),
-            //            UpdatedOn = recipe.updated_at.Date.ToString("MM-dd-yyyy"),
-            //            MyRating = 0,
-            //            MyRatingUpdatedAt = null,
-            //            RatingTotal = recipe.rating_total,
-            //            SyncMyRating = 0
-            //        });
-            //    }
-            //}
-
-            //return retValue;
-        }
-
-        /// <summary>
+         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -270,5 +104,34 @@ namespace ImportTamilRecipesIntoRealmDb
 
             return retValue;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private String GetGodaddyConnectionString()
+        {
+            return System.Configuration.ConfigurationManager.ConnectionStrings["goDaddyConStr"].ToString();
+        }
+
+        /// <summary
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private String SteralizeAndValidateRecipeDetail(String recipeDetail)
+        {
+            String retValue = Regex.Replace(recipeDetail, @"\s+", " ");
+            retValue = retValue.Replace(System.Environment.NewLine, System.String.Empty);
+            retValue = retValue.Replace("<strong>", System.String.Empty);
+            retValue = retValue.Replace(@"</strong>", System.String.Empty);
+            TamilRecipeValidationUtility recipeValidation = new TamilRecipeValidationUtility();
+            recipeValidation.IsValidRecipeDescription(retValue);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(retValue);
+            retValue = xmlDoc.OuterXml;
+            return retValue;
+        }
+
+       
     }
 }
