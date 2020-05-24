@@ -9,16 +9,14 @@ using Realms;
 
 namespace ImportTamilRecipesIntoRealmDb
 {
-    class Program
+    public class Program
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+        public static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
         static void Main(string[] args)
         {
-            // ImportBriyaniRecipes();
+            ImportBriyaniRecipes();
             ImportChettinadRecipes();
-
-
         }
 
         /// <summary>
@@ -26,12 +24,14 @@ namespace ImportTamilRecipesIntoRealmDb
         /// </summary>
         private static void ImportBriyaniRecipes()
         {
+            Helper helper = new Helper();
+
             RealmConfiguration config =
                 new RealmConfiguration(
                     @"D:\2018\Source\Repos\Samayal365\ImportTamilRecipesIntoRealmDb\RelmnDb\briyanirecipes.realm");
             Realm recipesRealm = Realm.GetInstance(config);
 
-            List<Category> categoryList = SqHelper.GetBriyaniCategoriesFromSqlServer();
+            List<Category> categoryList = helper.GetBriyaniCategoriesFromSqlServer();
             foreach (Category category in categoryList)
             {
                 Logger.Info(category.Name);
@@ -43,7 +43,7 @@ namespace ImportTamilRecipesIntoRealmDb
             Logger.Info("Successfully imported categories.");
 
 
-            List<Recipe> recipeList = SqHelper.GetBriyaniRecipesFromSqlServer();
+            List<Recipe> recipeList = helper.GetBriyaniRecipesFromSqlServer();
             foreach (Recipe recipe in recipeList)
             {
                 Logger.Info(recipe.Name);
@@ -54,7 +54,7 @@ namespace ImportTamilRecipesIntoRealmDb
             System.Diagnostics.Trace.WriteLine("Successfully imported recipes.");
             Logger.Info("Successfully imported recipes.");
 
-            foreach (RecipeConfig recipeConfig in SqHelper.GetRecipeConfigList())
+            foreach (RecipeConfig recipeConfig in helper.GetRecipeConfigList())
             {
                 recipesRealm.Write(() => { recipesRealm.Add(recipeConfig); });
             }
@@ -68,12 +68,14 @@ namespace ImportTamilRecipesIntoRealmDb
         /// </summary>
         private static void ImportChettinadRecipes()
         {
+            Helper helper = new Helper();
+
             RealmConfiguration config =
                 new RealmConfiguration(
                     @"D:\2018\Source\Repos\Samayal365\ImportTamilRecipesIntoRealmDb\RelmnDb\Chettinadrecipes.realm");
             Realm recipesRealm = Realm.GetInstance(config);
 
-            List<Category> categoryList = SqHelper.GetChettinadCategoriesFromSqlServer();
+            List<Category> categoryList = helper.GetChettinadCategoriesFromSqlServer();
             foreach (Category category in categoryList)
             {
                 Logger.Info(category.Name);
@@ -85,7 +87,7 @@ namespace ImportTamilRecipesIntoRealmDb
             Logger.Info("Successfully imported categories.");
 
 
-            List<Recipe> recipeList = SqHelper.GetChettinadRecipesFromSqlServer();
+            List<Recipe> recipeList = helper.GetChettinadRecipesFromSqlServer();
             foreach (Recipe recipe in recipeList)
             {
                 Logger.Info(recipe.Name);
@@ -96,7 +98,7 @@ namespace ImportTamilRecipesIntoRealmDb
             System.Diagnostics.Trace.WriteLine("Successfully imported recipes.");
             Logger.Info("Successfully imported recipes.");
 
-            foreach (RecipeConfig recipeConfig in SqHelper.GetRecipeConfigList())
+            foreach (RecipeConfig recipeConfig in helper.GetRecipeConfigList())
             {
                 recipesRealm.Write(() => { recipesRealm.Add(recipeConfig); });
             }
