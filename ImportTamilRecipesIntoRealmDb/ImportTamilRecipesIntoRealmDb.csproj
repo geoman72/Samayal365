@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="SQLHelper.cs" />
+    <Compile Include="RecipeDetailParser.cs" />
     <Compile Include="TamilRecipeValidationUtility.cs" />
     <Compile Include="TamilRecipeModel.Context.cs">
       <AutoGen>True</AutoGen>

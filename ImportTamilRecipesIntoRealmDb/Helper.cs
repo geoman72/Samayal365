@@ -62,13 +62,14 @@ namespace ImportTamilRecipesIntoRealmDb
 
             SqlDataReader sqlDataReader = SqlHelper.ExecuteReader(this.GetGodaddyConnectionString()
                 , CommandType.Text
-                , "select * from " + tableName + " where id <> 1016 order by id"
+                , "select * from " + tableName + " order by id"
             );
 
             Program.Logger.Info("------------------------- Recipes ---------------");
             while (sqlDataReader.Read())
             {
                 Program.Logger.Info(String.Format("Id => {0}, Name => {1}", sqlDataReader["id"].ToString(), sqlDataReader["name"].ToString()));
+
                 retValue.Add(new Recipe
                 {
                     CategoryId = int.Parse(sqlDataReader["category_id"].ToString()),
@@ -78,7 +79,7 @@ namespace ImportTamilRecipesIntoRealmDb
                     IsFavorite = Boolean.Parse(sqlDataReader["is_favorite"].ToString()) == true ? 1 : 0,
                     Name = sqlDataReader["name"].ToString().Replace("&gt;", "").Trim(),
                     Rating = int.Parse(sqlDataReader["ratings"].ToString()),
-                    Description = SteralizeAndValidateRecipeDetail(sqlDataReader["recipe_detail"].ToString()),
+                    Description = new RecipeDetailParser().ParseDetail((sqlDataReader["recipe_detail"].ToString())),
                     UpdatedOn = System.DateTime.Parse(sqlDataReader["updated_at"].ToString()).Date.ToString("MM-dd-yyyy"),
                     MyRating = 0,
                     MyRatingUpdatedAt = null,
@@ -123,19 +124,19 @@ namespace ImportTamilRecipesIntoRealmDb
         /// 
         /// </summary>
         /// <returns></returns>
-        private String SteralizeAndValidateRecipeDetail(String recipeDetail)
-        {
-            String retValue = Regex.Replace(recipeDetail, @"\s+", " ");
-            retValue = retValue.Replace(System.Environment.NewLine, System.String.Empty);
-            retValue = retValue.Replace("<strong>", System.String.Empty);
-            retValue = retValue.Replace(@"</strong>", System.String.Empty);
-            TamilRecipeValidationUtility recipeValidation = new TamilRecipeValidationUtility();
-            recipeValidation.IsValidRecipeDescription(retValue);
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(retValue);
-            retValue = xmlDoc.OuterXml;
-            return retValue;
-        }
+        //private String SteralizeAndValidateRecipeDetail(String recipeDetail)
+        //{
+        //    String retValue = Regex.Replace(recipeDetail, @"\s+", " ");
+        //    retValue = retValue.Replace(System.Environment.NewLine, System.String.Empty);
+        //    retValue = retValue.Replace("<strong>", System.String.Empty);
+        //    retValue = retValue.Replace(@"</strong>", System.String.Empty);
+        //    TamilRecipeValidationUtility recipeValidation = new TamilRecipeValidationUtility();
+        //    recipeValidation.IsValidRecipeDescription(retValue);
+        //    XmlDocument xmlDoc = new XmlDocument();
+        //    xmlDoc.LoadXml(retValue);
+        //    retValue = xmlDoc.OuterXml;
+        //    return retValue;
+        //}
 
        
     }
