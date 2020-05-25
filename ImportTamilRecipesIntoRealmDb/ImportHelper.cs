@@ -43,8 +43,7 @@ namespace ImportTamilRecipesIntoRealmDb
            // List<Recipe> recipeList = helper.GetBriyaniRecipesFromSqlServer();
             foreach (Recipe recipe in recipeList)
             {
-                Program.Logger.Info(recipe.Name);
-
+                Program.Logger.Info(String.Format("Id => {0}, Name => {1} \n{2}", recipe.Id, recipe.Name, recipe.Description));
                 recipesRealm.Write(() => { recipesRealm.Add(recipe); });
             }
 

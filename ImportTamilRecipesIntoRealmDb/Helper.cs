@@ -68,24 +68,27 @@ namespace ImportTamilRecipesIntoRealmDb
             Program.Logger.Info("------------------------- Recipes ---------------");
             while (sqlDataReader.Read())
             {
-                Program.Logger.Info(String.Format("Id => {0}, Name => {1}", sqlDataReader["id"].ToString(), sqlDataReader["name"].ToString()));
-
-                retValue.Add(new Recipe
+                Recipe recipe = new Recipe
                 {
                     CategoryId = int.Parse(sqlDataReader["category_id"].ToString()),
-                    CreatedOn = System.DateTime.Parse(sqlDataReader["created_at"].ToString()).Date.ToString("MM-dd-yyyy"),
+                    CreatedOn = System.DateTime.Parse(sqlDataReader["created_at"].ToString()).Date
+                        .ToString("MM-dd-yyyy"),
                     Id = int.Parse(sqlDataReader["id"].ToString()),
                     ImagePath = sqlDataReader["image_path"].ToString().Split('\\').Last(),
                     IsFavorite = Boolean.Parse(sqlDataReader["is_favorite"].ToString()) == true ? 1 : 0,
                     Name = sqlDataReader["name"].ToString().Replace("&gt;", "").Trim(),
                     Rating = int.Parse(sqlDataReader["ratings"].ToString()),
                     Description = new RecipeDetailParser().ParseDetail((sqlDataReader["recipe_detail"].ToString())),
-                    UpdatedOn = System.DateTime.Parse(sqlDataReader["updated_at"].ToString()).Date.ToString("MM-dd-yyyy"),
+                    UpdatedOn = System.DateTime.Parse(sqlDataReader["updated_at"].ToString()).Date
+                        .ToString("MM-dd-yyyy"),
                     MyRating = 0,
                     MyRatingUpdatedAt = null,
                     RatingTotal = int.Parse(sqlDataReader["rating_total"].ToString()),
                     SyncMyRating = 0
-                });
+                };
+
+                retValue.Add(recipe);
+               // Program.Logger.Info(String.Format("Id => {0}, Name => {1} \n{2}", recipe.Id, recipe.Name, recipe.Description));
             }
 
             return retValue;
@@ -120,24 +123,5 @@ namespace ImportTamilRecipesIntoRealmDb
             return System.Configuration.ConfigurationManager.ConnectionStrings["goDaddyConStr"].ToString();
         }
 
-        /// <summary
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        //private String SteralizeAndValidateRecipeDetail(String recipeDetail)
-        //{
-        //    String retValue = Regex.Replace(recipeDetail, @"\s+", " ");
-        //    retValue = retValue.Replace(System.Environment.NewLine, System.String.Empty);
-        //    retValue = retValue.Replace("<strong>", System.String.Empty);
-        //    retValue = retValue.Replace(@"</strong>", System.String.Empty);
-        //    TamilRecipeValidationUtility recipeValidation = new TamilRecipeValidationUtility();
-        //    recipeValidation.IsValidRecipeDescription(retValue);
-        //    XmlDocument xmlDoc = new XmlDocument();
-        //    xmlDoc.LoadXml(retValue);
-        //    retValue = xmlDoc.OuterXml;
-        //    return retValue;
-        //}
-
-       
     }
 }
