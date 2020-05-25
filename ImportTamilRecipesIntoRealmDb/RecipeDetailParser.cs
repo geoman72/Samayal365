@@ -35,9 +35,12 @@ namespace ImportTamilRecipesIntoRealmDb
 
             if (String.IsNullOrWhiteSpace(strDescription) == false)
             {
+                strDescription = Regex.Replace(strDescription, @"\s+", " ");
                 XmlDocument xmlDocument = new XmlDocument();
-                Regex regex = new Regex(@"\s+");
-                xmlDocument.LoadXml(strDescription.Replace(@"<strong>", "").Replace(@"</strong>", ""));
+                xmlDocument.LoadXml(strDescription
+                    .Replace(@"<strong>", "")
+                    .Replace(@"</strong>", "")
+                    .Replace(System.Environment.NewLine, System.String.Empty));
 
                 String currentHeading = "";
                 foreach (XmlNode xmlNode in xmlDocument.DocumentElement.ChildNodes)
@@ -73,37 +76,6 @@ namespace ImportTamilRecipesIntoRealmDb
                         }
                     }
                 }
-
-                //for (int section = 1; section <= 3; section++)
-                //{
-                //    foreach (XmlNode xmlNode in xmlDocument.DocumentElement.SelectSingleNode(System.String.Format(@"/div/p[{0}]", section)))
-                //    {
-                //        retValue.Add(xmlNode.InnerText.Trim(), new List<string>());
-
-                    //        // /html/body/div/p[1]/p
-                    //        foreach (XmlNode xmlOlNode in xmlDocument.DocumentElement.SelectNodes(System.String.Format(@"/div/p[{0}]/p", section)))
-                    //        {
-                    //            if (xmlOlNode.FirstChild != null)
-                    //            {
-                    //                if (xmlOlNode.LastChild.Name == "p")
-                    //                {
-                    //                    retValue[xmlNode.InnerText.Trim()].Add("----------------------------------------------------");
-                    //                    retValue[xmlNode.InnerText.Trim()].Add(regex.Replace(xmlOlNode.FirstChild.InnerText.Trim().Replace("\"", "'"), " "));
-                    //                    retValue[xmlNode.InnerText.Trim()].Add("----------------------------------------------------");
-                    //                    foreach (XmlNode xmlOl1Node in xmlOlNode.LastChild.ChildNodes)
-                    //                    {
-                    //                        retValue[xmlNode.InnerText.Trim()].Add(regex.Replace(xmlOl1Node.InnerText.Trim().Replace("\"", "'"), " "));
-                    //                    }
-                    //                    retValue[xmlNode.InnerText.Trim()].Add("----------------------------------------------------");
-                    //                }
-                    //                else
-                    //                {
-                    //                    retValue[xmlNode.InnerText.Trim()].Add(regex.Replace(xmlOlNode.InnerText.Trim().Replace("\"", "'"), " "));
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
             }
 
             return retValue;
